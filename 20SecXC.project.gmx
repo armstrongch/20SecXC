@@ -6,10 +6,21 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\Test_spr</sprite>
+    <sprite>sprites\Tree_spr</sprite>
+    <sprite>sprites\Grass_spr</sprite>
+    <sprite>sprites\Trail_spr</sprite>
+    <sprite>sprites\Runner_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\Scroller_obj</object>
+    <object>objects\Tree_obj</object>
+    <object>objects\Trail_obj</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\Game_rm</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
