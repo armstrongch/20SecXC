@@ -14,9 +14,9 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\Scroller_obj</object>
     <object>objects\Tree_obj</object>
     <object>objects\Trail_obj</object>
+    <object>objects\ScrollManager_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Game_rm</room>
