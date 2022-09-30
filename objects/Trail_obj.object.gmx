@@ -77,7 +77,7 @@ if (animation_frame &gt;= 64)
             <kind>1</kind>
             <string>for (var i = -64; i &lt; room_height; i += 64)
 {
-    draw_sprite(sprite_index, 0, x, i + animation_frame);
+    draw_sprite_ext(sprite_index, 0, x, i + animation_frame, 1, 1, 0, image_blend, image_alpha);
 }
 </string>
           </argument>
