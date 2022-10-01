@@ -18,6 +18,7 @@
     <object>objects\Trail_obj</object>
     <object>objects\ScrollManager_obj</object>
     <object>objects\Runner_obj</object>
+    <object>objects\Player_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Game_rm</room>

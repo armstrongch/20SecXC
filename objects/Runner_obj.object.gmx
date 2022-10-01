@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>run_speed = 4;
+            <string>up = false; up_pressed = false;
+down = false; down_pressed = false;
+left = false; left_pressed = false;
+right = false; right_pressed = false;
+
+run_speed = 4;
+column_x = x;
+is_player = false;
 </string>
           </argument>
         </arguments>
@@ -48,10 +55,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y_dif = ScrollManager_obj.scroll_speed - run_speed;
+            <string>if (up_pressed) { run_speed += 1; up_pressed = false; }
+if (down_pressed) { run_speed -= 1; down_pressed = false; }
+
+//the further from the inside track you are, the slower you are
+column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;
+
+calc_run_speed = run_speed - column_mod;
+image_speed = 0.125 - 0.01*(ScrollManager_obj.scroll_speed - calc_run_speed);
+
+y_dif = ScrollManager_obj.scroll_speed - run_speed + column_mod;
+
+if (is_player)
+{
+    ScrollManager_obj.scroll_speed -= y_dif;
+    y_dif = 0;
+}
 
 y += y_dif;
-image_speed = 0.125 + -1*y_dif;
 </string>
           </argument>
         </arguments>
