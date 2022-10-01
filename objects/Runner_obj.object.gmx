@@ -30,9 +30,13 @@ down = false; down_pressed = false;
 left = false; left_pressed = false;
 right = false; right_pressed = false;
 
-run_speed = 4;
+default_run_speed = 4;
+run_speed = default_run_speed;
 column_x = x;
 is_player = false;
+max_energy = 100;
+energy = max_energy;
+between_columns = false;
 </string>
           </argument>
         </arguments>
@@ -55,12 +59,13 @@ is_player = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (up_pressed) { run_speed += 1; up_pressed = false; }
-if (down_pressed) { run_speed -= 1; down_pressed = false; }
+            <string>if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
+if (down_pressed) { run_speed -= 0.4; down_pressed = false; }
 
 //the further from the inside track you are, the slower you are
 column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;
 
+//calculated run speed = effort level + lane modifier
 calc_run_speed = run_speed - column_mod;
 image_speed = 0.125 - 0.01*(ScrollManager_obj.scroll_speed - calc_run_speed);
 
@@ -73,6 +78,49 @@ if (is_player)
 }
 
 y += y_dif;
+
+if (run_speed &gt; default_run_speed)
+{
+    speed_dif = run_speed - default_run_speed;
+    energy -= speed_dif/4;
+    if (energy &lt;= 0)
+    {
+        energy = 0;
+        run_speed = default_run_speed - 2;
+    }
+}
+else if (run_speed &lt; default_run_speed)
+{
+    speed_dif = default_run_speed - run_speed;
+    energy += speed_dif/6;
+    if (energy &gt; max_energy)
+    {
+        energy = max_energy;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
 </string>
           </argument>
         </arguments>
