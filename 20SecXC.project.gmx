@@ -19,6 +19,7 @@
     <object>objects\ScrollManager_obj</object>
     <object>objects\Runner_obj</object>
     <object>objects\Player_obj</object>
+    <object>objects\UI_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Game_rm</room>

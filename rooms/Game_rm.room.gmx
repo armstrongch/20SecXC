@@ -11,6 +11,7 @@
   <colour>0</colour>
   <showcolour>-1</showcolour>
   <code>instance_create(0, 0, ScrollManager_obj);
+instance_create(0, 0, UI_obj);
 for (var i = 0; i &lt; 4; i += 1)
 {
     for (var j = -64; j &lt; room_height; j += 64)

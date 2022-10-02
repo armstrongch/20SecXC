@@ -49,10 +49,10 @@ is_player = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>up_pressed = keyboard_check_pressed(vk_up);
-down_pressed = keyboard_check_pressed(vk_down);
-left = keyboard_check(vk_left);
-right = keyboard_check(vk_right);
+            <string>up_pressed = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W'));
+down_pressed = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'));
+left = keyboard_check(vk_left) || keyboard_check(ord('A'));
+right = keyboard_check(vk_right) || keyboard_check(ord('D'));
 
 event_inherited();
 </string>
@@ -79,11 +79,20 @@ event_inherited();
             <kind>1</kind>
             <string>event_inherited();
 
-draw_set_color(c_black);
-draw_rectangle(x+4, y-12, x+59, y-4, false);
+with(UI_obj)
+{
+    draw_set_color(c_black);
+    draw_rectangle(Player_obj.x+4, Player_obj.y-12, Player_obj.x+59, Player_obj.y-4, false);
+    
+    draw_set_color(c_white);
+    draw_rectangle(Player_obj.x+6, Player_obj.y-10, Player_obj.x+6 + 51*(Player_obj.energy/Player_obj.max_energy), Player_obj.y-6, false);
+}
 
-draw_set_color(c_white);
-draw_rectangle(x+6, y-10, x+6 + 51*(energy/max_energy), y-6, false);
+draw_set_alpha(0.5);
+draw_set_color(c_lime);
+draw_rectangle(x+76, y+y_dif, x+96, y + 32, false);
+draw_set_alpha(1);
+
 </string>
           </argument>
         </arguments>

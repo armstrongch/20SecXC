@@ -62,6 +62,7 @@ between_columns = false;
             <string>if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
 if (down_pressed) { run_speed -= 0.4; down_pressed = false; }
 
+//move left/right if between columns
 if (between_columns)
 {
     if (abs(x-column_x) &lt;= 4)
@@ -73,17 +74,26 @@ if (between_columns)
     else { x += 4; }
 }
 
+//start horizontal move if space free
 if (!between_columns)
 {
     if (right &amp;&amp; column_x &lt; ScrollManager_obj.rightmost_trail_x)
     {
-        between_columns = true;
-        column_x += 64;
+        runner_abreast = collision_rectangle(x+76, y+y_dif, x+96, y + 32, Runner_obj, true, true);
+        if (runner_abreast == noone)
+        {
+            between_columns = true;
+            column_x += 64;
+        }
     }
     else if (left &amp;&amp; column_x &gt; ScrollManager_obj.leftmost_trail_x)
     {
-        between_columns = true;
-        column_x -= 64;
+        runner_abreast = collision_rectangle(x-12, y+y_dif, x-32, y + 32, Runner_obj, true, true);
+        if (runner_abreast == noone)
+        {
+            between_columns = true;
+            column_x -= 64;
+        }
     }
 }
 
@@ -96,6 +106,14 @@ image_speed = 0.125 - 0.01*(ScrollManager_obj.scroll_speed - calc_run_speed);
 
 y_dif = ScrollManager_obj.scroll_speed - run_speed + column_mod;
 
+//can't pass runner ahead
+runner_ahead = collision_rectangle(x+8, y+y_dif, x+56, y+32, Runner_obj, false, true);
+if (runner_ahead != noone)
+{
+    run_speed = min(run_speed, runner_ahead.run_speed);
+    y_dif = max(y_dif, y - (runner_ahead.y + 64));
+}
+
 if (is_player)
 {
     ScrollManager_obj.scroll_speed -= y_dif;
@@ -104,6 +122,7 @@ if (is_player)
 
 y += y_dif;
 
+//costs energy to run fast, saves energy running slow
 if (run_speed &gt; default_run_speed)
 {
     speed_dif = run_speed - default_run_speed;
@@ -118,10 +137,17 @@ else if (run_speed &lt; default_run_speed)
 {
     speed_dif = default_run_speed - run_speed;
     energy += speed_dif/6;
-    if (energy &gt; max_energy)
-    {
-        energy = max_energy;
-    }
+}
+
+//draft off runners ahead
+runner_ahead = collision_rectangle(x+8, y+y_dif - 32, x+56, y+32, Runner_obj, false, true);
+if (runner_ahead != noone)
+{
+    energy += 1;
+}
+if (energy &gt; max_energy)
+{
+    energy = max_energy;
 }
 </string>
           </argument>
