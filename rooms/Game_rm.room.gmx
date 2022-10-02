@@ -21,6 +21,7 @@ for (var i = 0; i &lt; 4; i += 1)
 }
 
 ScrollManager_obj.rightmost_trail_x = instance_nearest(room_width, room_height, Trail_obj).x;
+ScrollManager_obj.leftmost_trail_x = instance_nearest(0, room_height, Trail_obj).x;
 with (Trail_obj)
 {
     

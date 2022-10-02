@@ -51,6 +51,8 @@ is_player = true;
             <kind>1</kind>
             <string>up_pressed = keyboard_check_pressed(vk_up);
 down_pressed = keyboard_check_pressed(vk_down);
+left = keyboard_check(vk_left);
+right = keyboard_check(vk_right);
 
 event_inherited();
 </string>

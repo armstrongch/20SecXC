@@ -62,6 +62,31 @@ between_columns = false;
             <string>if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
 if (down_pressed) { run_speed -= 0.4; down_pressed = false; }
 
+if (between_columns)
+{
+    if (abs(x-column_x) &lt;= 4)
+    {
+        x = column_x;
+        between_columns = false;
+    }
+    else if (x &gt; column_x) { x -= 4; }
+    else { x += 4; }
+}
+
+if (!between_columns)
+{
+    if (right &amp;&amp; column_x &lt; ScrollManager_obj.rightmost_trail_x)
+    {
+        between_columns = true;
+        column_x += 64;
+    }
+    else if (left &amp;&amp; column_x &gt; ScrollManager_obj.leftmost_trail_x)
+    {
+        between_columns = true;
+        column_x -= 64;
+    }
+}
+
 //the further from the inside track you are, the slower you are
 column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;
 
