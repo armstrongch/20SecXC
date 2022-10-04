@@ -13,6 +13,9 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\get_cpu_input.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\Tree_obj</object>
     <object>objects\Trail_obj</object>

@@ -59,7 +59,12 @@ between_columns = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
+            <string>if (!is_player)
+{
+    get_cpu_input();
+}
+
+if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
 if (down_pressed) { run_speed -= 0.4; down_pressed = false; }
 
 //move left/right if between columns
