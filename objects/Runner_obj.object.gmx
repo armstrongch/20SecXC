@@ -37,6 +37,7 @@ is_player = false;
 max_energy = 100;
 energy = max_energy;
 between_columns = false;
+is_drafting = false;
 </string>
           </argument>
         </arguments>
@@ -66,6 +67,7 @@ between_columns = false;
 
 if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
 if (down_pressed) { run_speed -= 0.4; down_pressed = false; }
+if (run_speed &lt; 0) { run_speed = 0; }
 
 //move left/right if between columns
 if (between_columns)
@@ -84,7 +86,7 @@ if (!between_columns)
 {
     if (right &amp;&amp; column_x &lt; ScrollManager_obj.rightmost_trail_x)
     {
-        runner_abreast = collision_rectangle(x+76, y+y_dif, x+96, y + 32, Runner_obj, true, true);
+        runner_abreast = collision_rectangle(x+76, y-12, x+96, y + 32, Runner_obj, true, true);
         if (runner_abreast == noone)
         {
             between_columns = true;
@@ -93,7 +95,7 @@ if (!between_columns)
     }
     else if (left &amp;&amp; column_x &gt; ScrollManager_obj.leftmost_trail_x)
     {
-        runner_abreast = collision_rectangle(x-12, y+y_dif, x-32, y + 32, Runner_obj, true, true);
+        runner_abreast = collision_rectangle(x-12, y-12, x-32, y + 32, Runner_obj, true, true);
         if (runner_abreast == noone)
         {
             between_columns = true;
@@ -116,7 +118,7 @@ runner_ahead = collision_rectangle(x+8, y+y_dif, x+56, y+32, Runner_obj, false, 
 if (runner_ahead != noone)
 {
     run_speed = min(run_speed, runner_ahead.run_speed);
-    y_dif = max(y_dif, y - (runner_ahead.y + 64));
+    y_dif = max(y_dif, runner_ahead.y+64 - y);
 }
 
 if (is_player)
@@ -149,6 +151,11 @@ runner_ahead = collision_rectangle(x+8, y+y_dif - 32, x+56, y+32, Runner_obj, fa
 if (runner_ahead != noone)
 {
     energy += 1;
+    is_drafting = true;
+}
+else
+{
+    is_drafting = false;
 }
 if (energy &gt; max_energy)
 {
@@ -177,6 +184,29 @@ if (energy &gt; max_energy)
           <argument>
             <kind>1</kind>
             <string>draw_self();
+global.draw_runner = self;
+with(UI_obj)
+{
+    draw_set_color(c_black);
+    draw_rectangle(
+        global.draw_runner.x+4,
+        global.draw_runner.y-12,
+        global.draw_runner.x+59,
+        global.draw_runner.y-4, false);
+    
+    draw_set_color(c_white);
+    draw_rectangle(
+        global.draw_runner.x+6,
+        global.draw_runner.y-10,
+        global.draw_runner.x+6 + 51*(global.draw_runner.energy/global.draw_runner.max_energy),
+        global.draw_runner.y-6, false);
+}
+
+draw_set_alpha(0.5);
+draw_set_color(c_lime);
+draw_rectangle(x+8, y+y_dif, x+56, y+32, false);
+draw_set_alpha(1);
+
 </string>
           </argument>
         </arguments>
