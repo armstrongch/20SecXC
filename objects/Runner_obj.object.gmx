@@ -38,6 +38,8 @@ max_energy = 100;
 energy = max_energy;
 between_columns = false;
 is_drafting = false;
+
+distance_to_finish = 2000;
 </string>
           </argument>
         </arguments>
@@ -129,6 +131,8 @@ if (is_player)
 
 y += y_dif;
 
+distance_to_finish -= (ScrollManager_obj.scroll_speed - y_dif);
+
 //costs energy to run fast, saves energy running slow
 if (run_speed &gt; default_run_speed)
 {
@@ -202,10 +206,12 @@ with(UI_obj)
         global.draw_runner.y-6, false);
 }
 
+/*
 draw_set_alpha(0.5);
 draw_set_color(c_lime);
 draw_rectangle(x+8, y+y_dif, x+56, y+32, false);
 draw_set_alpha(1);
+*/
 
 </string>
           </argument>
