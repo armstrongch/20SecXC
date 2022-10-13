@@ -40,6 +40,8 @@ between_columns = false;
 is_drafting = false;
 
 distance_to_finish = 2000;
+
+trying_to_pass_counter = 0;
 </string>
           </argument>
         </arguments>
