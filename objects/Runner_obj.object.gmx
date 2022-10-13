@@ -110,17 +110,17 @@ if (!between_columns)
 column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;
 
 //calculated run speed = effort level + lane modifier
-calc_run_speed = run_speed - column_mod;
-image_speed = 0.125 - 0.01*(ScrollManager_obj.scroll_speed - calc_run_speed);
+calc_run_speed = max(0, run_speed - column_mod);
+image_speed = calc_run_speed / 30;
 
-y_dif = ScrollManager_obj.scroll_speed - run_speed + column_mod;
+y_dif = ScrollManager_obj.scroll_speed - calc_run_speed;
 
 //can't pass runner ahead
 runner_ahead = collision_rectangle(x+8, y+y_dif, x+56, y+32, Runner_obj, false, true);
 if (runner_ahead != noone)
 {
     run_speed = min(run_speed, runner_ahead.run_speed);
-    y_dif = max(y_dif, runner_ahead.y+64 - y);
+    y_dif = max(y_dif, runner_ahead.y_dif);
 }
 
 if (is_player)
@@ -205,14 +205,6 @@ with(UI_obj)
         global.draw_runner.x+6 + 51*(global.draw_runner.energy/global.draw_runner.max_energy),
         global.draw_runner.y-6, false);
 }
-
-/*
-draw_set_alpha(0.5);
-draw_set_color(c_lime);
-draw_rectangle(x+8, y+y_dif, x+56, y+32, false);
-draw_set_alpha(1);
-*/
-
 </string>
           </argument>
         </arguments>

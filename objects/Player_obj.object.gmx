@@ -55,6 +55,8 @@ left = keyboard_check(vk_left) || keyboard_check(ord('A'));
 right = keyboard_check(vk_right) || keyboard_check(ord('D'));
 
 event_inherited();
+
+if (debug_mode &amp;&amp; keyboard_check_pressed(ord('R'))) { game_restart(); }
 </string>
           </argument>
         </arguments>
@@ -83,6 +85,19 @@ draw_set_color(c_black);
 draw_rectangle(0, 64, 64*4, 64*4, false);
 draw_set_color(c_white);
 draw_text(12, 76, "Distance#Remaining:#" + string(distance_to_finish));
+draw_text(12, 116, "Calculated Run Speed:#" + string(calc_run_speed));
+
+draw_set_alpha(0.5);
+draw_set_color(c_red);
+draw_rectangle(x+8, y+y_dif, x+56, y+32, false);
+draw_set_alpha(1);
+
+draw_set_color(c_green);
+draw_rectangle(x+8, y+y_dif - 32, x+56, y+32, true);
+
+draw_set_color(c_yellow);
+draw_rectangle(x+76, y-12, x+96, y + 32, false);
+draw_rectangle(x-12, y-12, x-32, y + 32, false);
 </string>
           </argument>
         </arguments>
