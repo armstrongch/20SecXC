@@ -3,19 +3,29 @@ for (var i = 0; i < instance_number(Runner_obj); i += 1)
 {
     var test_runner = instance_find(Runner_obj, i);
     if (test_runner.id != self.id && place_meeting(x+x_dif, y+y_dif, test_runner))
-    {
-        //shorten move to avoid collision
-        dist_from_other = point_distance(test_runner.x, test_runner.y, x+x_dif, y+y_dif);
-        adj_x = test_runner.x + cos(dist_from_other/180*pi)*64;
-        adj_y = test_runner.y - sin(dist_from_other/180*pi)*64;
+    {   
+
+        var short_dist_attempts = 10;
+        var x_dif_mod = x_dif/short_dist_attempts;
+        var y_dif_mod = y_dif/short_dist_attempts;
         
-        x_dif = adj_x - x;
-        y_dif = adj_y - y;
-        
-        //if colliding runner is ahead, slow down
-        if (test_runner.y < y)
+        for (var j = 0; j < short_dist_attempts; j += 1)
         {
-            run_speed = test_runner.run_speed - test_runner.column_mod + column_mod;
+            x_dif -= x_dif_mod;
+            y_dif -= y_dif_mod;
+            if (!place_meeting(x+x_dif, y+y_dif, test_runner))
+            {
+                j = short_dist_attempts + 1;
+            }
+        }
+        
+        //THIS DOES NOT WORK :(
+        //if colliding runner is behind, show them down
+        if (test_runner.y > y)
+        {
+            //show_debug_message("before: " + string(run_speed) + " vs. " + string(test_runner.run_speed));
+            //test_runner.run_speed = run_speed + test_runner.column_mod - column_mod;
+            //show_debug_message("after: " + string(run_speed) + " vs. " + string(test_runner.run_speed));
         }
     }
 }
