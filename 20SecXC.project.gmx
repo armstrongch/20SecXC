@@ -15,6 +15,8 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\get_cpu_input.gml</script>
+    <script>scripts\move_runner.gml</script>
+    <script>scripts\move_all_runners.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\Tree_obj</object>

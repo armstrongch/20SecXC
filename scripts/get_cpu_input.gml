@@ -4,7 +4,7 @@ right = false;
 left = false
 
 trying_to_pass_counter -= 1;
-
+/*
 //Get runners ahead
 global.runner_check_y = y;
 global.runners_ahead = 0;
@@ -63,5 +63,4 @@ else
         down_pressed = true;
     }
 }
-
-
+*/

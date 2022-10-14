@@ -47,7 +47,7 @@ trying_to_pass_counter = 0;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -64,49 +64,52 @@ trying_to_pass_counter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!is_player)
+            <string>distance_to_finish -= (ScrollManager_obj.scroll_speed - y_dif);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>has_moved = false;
+
+if (!is_player)
 {
     get_cpu_input();
 }
 
+//Get runners ahead
+global.runner_check_y = y;
+global.runners_ahead = 0;
+with (Runner_obj)
+{
+    if (y &lt; global.runner_check_y)
+    {
+        global.runners_ahead += 1;
+    }
+}
+runners_ahead = global.runners_ahead;
+
+//calculate run speed based on input
 if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
 if (down_pressed) { run_speed -= 0.4; down_pressed = false; }
 if (run_speed &lt; 0) { run_speed = 0; }
-
-//move left/right if between columns
-if (between_columns)
-{
-    if (abs(x-column_x) &lt;= 4)
-    {
-        x = column_x;
-        between_columns = false;
-    }
-    else if (x &gt; column_x) { x -= 4; }
-    else { x += 4; }
-}
-
-//start horizontal move if space free
-if (!between_columns)
-{
-    if (right &amp;&amp; column_x &lt; ScrollManager_obj.rightmost_trail_x)
-    {
-        runner_abreast = collision_rectangle(x+76, y-12, x+96, y + 32, Runner_obj, true, true);
-        if (runner_abreast == noone)
-        {
-            between_columns = true;
-            column_x += 64;
-        }
-    }
-    else if (left &amp;&amp; column_x &gt; ScrollManager_obj.leftmost_trail_x)
-    {
-        runner_abreast = collision_rectangle(x-12, y-12, x-32, y + 32, Runner_obj, true, true);
-        if (runner_abreast == noone)
-        {
-            between_columns = true;
-            column_x -= 64;
-        }
-    }
-}
 
 //the further from the inside track you are, the slower you are
 column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;
@@ -115,58 +118,13 @@ column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;
 calc_run_speed = max(0, run_speed - column_mod);
 image_speed = calc_run_speed / 30;
 
+//get target x and y
 y_dif = ScrollManager_obj.scroll_speed - calc_run_speed;
+x_dif = 4*right - 4*left;
 
-//can't pass runner ahead
-runner_ahead = collision_rectangle(x+8, y+y_dif, x+56, y+32, Runner_obj, false, true);
-if (runner_ahead != noone)
-{
-    run_speed = min(run_speed, runner_ahead.run_speed);
-    y_dif = max(y_dif, runner_ahead.y_dif);
-}
-
-if (is_player)
-{
-    ScrollManager_obj.scroll_speed -= y_dif;
-    y_dif = 0;
-}
-
-y += y_dif;
-
-distance_to_finish -= (ScrollManager_obj.scroll_speed - y_dif);
-
-//costs energy to run fast, saves energy running slow
-if (run_speed &gt; default_run_speed)
-{
-    speed_dif = run_speed - default_run_speed;
-    energy -= speed_dif/4;
-    if (energy &lt;= 0)
-    {
-        energy = 0;
-        run_speed = default_run_speed - 2;
-    }
-}
-else if (run_speed &lt; default_run_speed)
-{
-    speed_dif = default_run_speed - run_speed;
-    energy += speed_dif/6;
-}
-
-//draft off runners ahead
-runner_ahead = collision_rectangle(x+8, y+y_dif - 32, x+56, y+32, Runner_obj, false, true);
-if (runner_ahead != noone)
-{
-    energy += 1;
-    is_drafting = true;
-}
-else
-{
-    is_drafting = false;
-}
-if (energy &gt; max_energy)
-{
-    energy = max_energy;
-}
+//don't allow runners to leave the trail
+if (x + x_dif &gt; ScrollManager_obj.rightmost_trail_x) { x_dif = ScrollManager_obj.rightmost_trail_x - x; }
+if (x + x_dif &lt; ScrollManager_obj.leftmost_trail_x) { x_dif = ScrollManager_obj.leftmost_trail_x - x; }
 </string>
           </argument>
         </arguments>
