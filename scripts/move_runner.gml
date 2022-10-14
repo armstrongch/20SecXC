@@ -8,12 +8,14 @@ for (var i = 0; i < instance_number(Runner_obj); i += 1)
         dist_from_other = point_distance(test_runner.x, test_runner.y, x+x_dif, y+y_dif);
         adj_x = test_runner.x + cos(dist_from_other/180*pi)*64;
         adj_y = test_runner.y - sin(dist_from_other/180*pi)*64;
-        y_dif = adj_y - y;
+        
         x_dif = adj_x - x;
+        y_dif = adj_y - y;
+        
         //if colliding runner is ahead, slow down
         if (test_runner.y < y)
         {
-            //run_speed = test_runner.run_speed - test_runner.column_mod + column_mod;
+            run_speed = test_runner.run_speed - test_runner.column_mod + column_mod;
         }
     }
 }
