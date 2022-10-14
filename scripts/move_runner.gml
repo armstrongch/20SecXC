@@ -4,11 +4,12 @@ for (var i = 0; i < instance_number(Runner_obj); i += 1)
     var test_runner = instance_find(Runner_obj, i);
     if (test_runner.id != self.id && place_meeting(x+x_dif, y+y_dif, test_runner))
     {   
-
+        /*
         var short_dist_attempts = 10;
         var x_dif_mod = x_dif/short_dist_attempts;
         var y_dif_mod = y_dif/short_dist_attempts;
         
+        //reduce attempted move distance until no longer colliding
         for (var j = 0; j < short_dist_attempts; j += 1)
         {
             x_dif -= x_dif_mod;
@@ -18,15 +19,7 @@ for (var i = 0; i < instance_number(Runner_obj); i += 1)
                 j = short_dist_attempts + 1;
             }
         }
-        
-        //THIS DOES NOT WORK :(
-        //if colliding runner is behind, show them down
-        if (test_runner.y > y)
-        {
-            //show_debug_message("before: " + string(run_speed) + " vs. " + string(test_runner.run_speed));
-            //test_runner.run_speed = run_speed + test_runner.column_mod - column_mod;
-            //show_debug_message("after: " + string(run_speed) + " vs. " + string(test_runner.run_speed));
-        }
+        */
     }
 }
 
