@@ -11,3 +11,9 @@ while (runners_ahead_counter <= instance_number(Runner_obj))
     }
     runners_ahead_counter += 1;
 }
+
+//players speed dictates camera scroll speed
+with (Player_obj)
+{
+    ScrollManager_obj.scroll_speed -= y_dif;
+}
