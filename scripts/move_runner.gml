@@ -4,89 +4,59 @@ for (var i = 0; i < instance_number(Runner_obj); i += 1)
     var test_runner = instance_find(Runner_obj, i);
     if (test_runner.id != self.id && place_meeting(x+x_dif, y+y_dif, test_runner))
     {   
-        var successfully_resolved_collision = false;
-        if (other.y < y)
+        var adjustments = array_create(3);
+        adjustments[0] = "none";
+        adjustments[1] = "none";
+        
+        //if we are ahead of colliding runner
+        if (y < test_runner.y)
         {
-            show_debug_message('*****************START OF COLLISION TEST*****************');
-            show_debug_message('x_dif: ' + string(x_dif));
-            show_debug_message('y_dif: ' + string(y_dif));
-            //measure distance to colliding runner
-            var target_dist_from_other = point_distance(x+x_dif, y+y_dif, test_runner.x, test_runner.y);
-            show_debug_message('target_dist_from_other: ' + string(target_dist_from_other));
-            
-            //measure direction of colliding runner
-            var move_dir = point_direction(0, 0, x_dif, y_dif);
-            show_debug_message('move_dir: ' + string(move_dir));
-            
-            //create 2 new potential directions - 10 degrees clockwise and 10 degrees counter
-            var add_10_deg_test = move_dir + 10;
-            var sub_10_deg_test = move_dir - 10;
-            show_debug_message('add_10_deg_test: ' + string(add_10_deg_test));
-            show_debug_message('sub_10_deg_test: ' + string(sub_10_deg_test));
-            
-            //current move distance
-            var move_dist = point_distance(0, 0, x_dif, y_dif);
-            show_debug_message('move_dist: ' + string(move_dist));
-            
-            //get the positions of both potential moves
-            var add_test_x_dif = cos(add_10_deg_test/180*pi)*move_dist;
-            var add_test_y_dif = -sin(add_10_deg_test/180*pi)*move_dist;
-            show_debug_message('add_test_x_dif: ' + string(add_test_x_dif));
-            show_debug_message('add_test_y_dif: ' + string(add_test_y_dif));
-            
-            var sub_test_x_dif = cos(sub_10_deg_test/180*pi)*move_dist;
-            var sub_test_y_dif = -sin(sub_10_deg_test/180*pi)*move_dist;
-            show_debug_message('sub_test_x_dif: ' + string(sub_test_x_dif));
-            show_debug_message('sub_test_y_dif: ' + string(sub_test_y_dif));
-            
-            //get the distance of both potential moves to colliding runner
-            var add_test_dist_from_other = point_distance(x+add_test_y_dif, y+add_test_y_dif, test_runner.x, test_runner.y);
-            var sub_test_dist_from_other = point_distance(x+sub_test_x_dif, y+sub_test_y_dif, test_runner.x, test_runner.y);
-            show_debug_message('add_test_dist_from_other: ' + string(add_test_dist_from_other));
-            show_debug_message('sub_test_dist_from_other: ' + string(sub_test_dist_from_other));
-            
-            var angle_adj_attempts = 10;
-            //use the results of the previous test to determine whether we should adjust movement clockwise or counter to avoid collision
-            var angle_adj_amount = 9;
-            if (sub_test_dist_from_other > add_test_dist_from_other) { angle_adj_amount = -9; }
-            
-            for (var j = 0; j < angle_adj_attempts; j += 1)
+            //if we are trying to cut them off
+            if (x_dif != 0)
             {
-                var test_dir = move_dir + j*angle_adj_amount;
-                var test_x_dif= cos(test_dir/180*pi)*move_dist;
-                var test_y_dif = sin(test_dir/180*pi)*move_dist;
-                show_debug_message('test_dir: ' + string(test_dir));
-                show_debug_message('test_x_dif: ' + string(test_x_dif));
-                show_debug_message('test_y_dif: ' + string(test_y_dif));
-                
-                if (!place_meeting(x+test_x_dif, y+test_y_dif, test_runner))
-                {
-                    j = angle_adj_attempts + 1;
-                    x_dif = test_x_dif;
-                    y_dif = test_y_dif;
-                    show_debug_message('SUCCESS!');
-                    show_debug_message('x_dif: ' + string(x_dif));
-                    show_debug_message('y_dif: ' + string(y_dif));
-                    successfully_resolved_collision = true;
-                }
+                //reduce x_dif until no longer colliding
+                adjustments[0] = "x";
+                adjustments[1] = "both";
             }
-            show_debug_message('*****************END OF COLLISION TEST*****************');
+            //otherwise, they must be running too fast on our heels.
+            //we'll deal with it in their collision handling instead
+        }
+        else
+        {
+            //if we are trying to cross behind a runner ahead
+            if (abs(x+x_dif - x) > abs(x+x_dif - test_runner.x))
+            {
+                //try to reduce y first to allow for seamless crossover
+                adjustments[0] = "y";
+                adjustments[1] = "both";
+            }
+            else
+            {
+                adjustments[0] = "both";
+            }
         }
         
-        if (!successfully_resolved_collision)
+        //iterate through adjustments
+        for (var j = 0; j < 2; j += 1)
         {
-            var short_dist_attempts = 10;
-            var x_dif_mod = x_dif/short_dist_attempts;
-            var y_dif_mod = y_dif/short_dist_attempts;
+            var x_adj_mod = 0;
+            var y_adj_mod = 0;
+            var x_adj = x_dif;
+            var y_adj = y_dif;
+            if (adjustments[j] == "x") || (adjustments[j] == "both") { x_adj_mod = x_dif/10; }
+            if (adjustments[j] == "y") || (adjustments[j] == "both") { y_adj_mod = y_dif/10; }
             
-            //reduce attempted move distance until no longer colliding
-            for (var j = 0; j < short_dist_attempts; j += 1)
+            //test adjustment, and break out of loops and move if we find a successful non-colliding position
+            for (var k = 0; k < 10; k += 1)
             {
-                x_dif -= x_dif_mod;
-                y_dif -= y_dif_mod;
-                if (!place_meeting(x+x_dif, y+y_dif, test_runner))
+                x_adj -= x_adj_mod;
+                y_adj -= y_adj_mod;
+                if (!place_meeting(x+x_adj, y+y_adj, test_runner))
                 {
-                    j = short_dist_attempts + 1;
+                    x_dif = x_adj;
+                    y_dif = y_adj;
+                    k = 10;
+                    j = 2;
                 }
             }
         }
