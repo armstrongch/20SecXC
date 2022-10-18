@@ -39,6 +39,7 @@ is_player = false;
 max_energy = 100;
 energy = max_energy;
 is_drafting = false;
+runners_ahead = 1;
 
 trying_to_pass_counter = 0;
 </string>
