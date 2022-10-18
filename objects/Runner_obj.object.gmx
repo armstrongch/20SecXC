@@ -25,46 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>up = false; up_pressed = false;
-down = false; down_pressed = false;
-left = false; left_pressed = false;
-right = false; right_pressed = false;
+            <string>up = false;
+down = false;
+left = false;
+right = false;
 
-default_run_speed = 4;
-run_speed = default_run_speed;
-column_x = x;
+slow_run_speed = 3;
+medium_run_speed = 4;
+fast_run_speed = 6;
+
+run_speed = medium_run_speed;
 is_player = false;
 max_energy = 100;
 energy = max_energy;
-between_columns = false;
 is_drafting = false;
 
-distance_to_finish = 2000;
-
 trying_to_pass_counter = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>distance_to_finish -= (ScrollManager_obj.scroll_speed - y_dif);
 </string>
           </argument>
         </arguments>
@@ -107,9 +83,32 @@ with (Runner_obj)
 runners_ahead = global.runners_ahead;
 
 //calculate run speed based on input
-if (up_pressed) { if (energy &gt; 5) { run_speed += 0.4; } up_pressed = false; }
-if (down_pressed) { run_speed -= 0.4; down_pressed = false; }
-if (run_speed &lt; 0) { run_speed = 0; }
+//it costs energy to run fast, saves energy running slow
+if (up) 
+{
+    run_speed = fast_run_speed;
+    energy -= 0.5;
+    if (energy &lt;= 0)
+    {
+        energy = 0;
+        run_speed = medium_run_speed;
+    }
+}
+else if (down) 
+{
+    run_speed = slow_run_speed;
+    energy += 0.25;
+    if (energy &gt; max_energy)
+    {
+        energy = max_energy;
+    }
+}
+else
+{
+    run_speed = medium_run_speed;
+}
+up = false;
+down = false;
 
 //the further from the inside track you are, the slower you are
 column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;

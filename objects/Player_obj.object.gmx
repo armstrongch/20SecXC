@@ -27,6 +27,30 @@
             <kind>1</kind>
             <string>event_inherited();
 is_player = true;
+distance_to_finish = 5000;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>distance_to_finish -= (ScrollManager_obj.scroll_speed);
 </string>
           </argument>
         </arguments>
@@ -49,8 +73,8 @@ is_player = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>up_pressed = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord('W'));
-down_pressed = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord('S'));
+            <string>up = keyboard_check(vk_up) || keyboard_check(ord('W'));
+down = keyboard_check(vk_down) || keyboard_check(ord('S'));
 left = keyboard_check(vk_left) || keyboard_check(ord('A'));
 right = keyboard_check(vk_right) || keyboard_check(ord('D'));
 
