@@ -41,7 +41,7 @@ energy = max_energy;
 is_drafting = false;
 runners_ahead = 1;
 
-trying_to_pass_counter = 0;
+cpu_brain_type = "none";
 </string>
           </argument>
         </arguments>
@@ -64,9 +64,11 @@ trying_to_pass_counter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>has_moved = false;
-
-if (!is_player)
+            <string>if (!ScrollManager_obj.game_has_started)
+{
+    up = false; down = false; left = false; right = false;
+}
+else if (!is_player)
 {
     get_cpu_input();
 }
@@ -113,10 +115,12 @@ down = false;
 
 //the further from the inside track you are, the slower you are
 column_mod = max(0, (ScrollManager_obj.rightmost_trail_x - x)) / 64 * 0.3;
+//if the game has not started yet, don't apply column mod
+if (!ScrollManager_obj.game_has_started) { column_mod = 0; }
 
 //calculated run speed = effort level + lane modifier
 calc_run_speed = max(0, run_speed - column_mod);
-image_speed = calc_run_speed / 30;
+image_speed = calc_run_speed / 20;
 
 //get target x and y
 y_dif = ScrollManager_obj.scroll_speed - calc_run_speed;

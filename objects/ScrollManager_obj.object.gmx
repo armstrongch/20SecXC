@@ -26,7 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>scroll_speed = 4;
-ScrollManager_obj.rightmost_trail_x = -1; //assigned by room creation code
+//assigned by room creation code
+rightmost_trail_x = -1;
+max_player_distance_from_finish = 9999;
+player_distance_from_finish = max_player_distance_from_finish;
+
+game_has_started = false;
 </string>
           </argument>
         </arguments>
@@ -49,7 +54,11 @@ ScrollManager_obj.rightmost_trail_x = -1; //assigned by room creation code
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>move_all_runners();
+            <string>if (keyboard_check_pressed(vk_space)) { game_has_started = true; }
+if (game_has_started)
+{
+    move_all_runners();
+}
 </string>
           </argument>
         </arguments>

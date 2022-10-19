@@ -27,30 +27,6 @@
             <kind>1</kind>
             <string>event_inherited();
 is_player = true;
-distance_to_finish = 5000;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>distance_to_finish -= (ScrollManager_obj.scroll_speed);
 </string>
           </argument>
         </arguments>
@@ -108,7 +84,7 @@ if (debug_mode &amp;&amp; keyboard_check_pressed(ord('R'))) { game_restart(); }
 draw_set_color(c_black);
 draw_rectangle(0, 64, 64*4, 64*4, false);
 draw_set_color(c_white);
-draw_text(12, 76, "Distance#Remaining:#" + string(distance_to_finish));
+draw_text(12, 76, "Distance#Remaining:#" + string(ScrollManager_obj.player_distance_from_finish));
 draw_text(12, 116, "Calculated Run Speed:#" + string(calc_run_speed));
 
 draw_set_alpha(0.5);

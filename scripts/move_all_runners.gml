@@ -13,7 +13,8 @@ while (runners_ahead_counter <= instance_number(Runner_obj))
 }
 
 //players speed dictates camera scroll speed
-with (Player_obj)
+with (ScrollManager_obj)
 {
-    ScrollManager_obj.scroll_speed -= y_dif;
+    scroll_speed -= Player_obj.y_dif;
+    player_distance_from_finish -= abs(scroll_speed);
 }
