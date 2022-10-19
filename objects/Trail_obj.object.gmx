@@ -75,9 +75,14 @@ if (animation_frame &gt;= 64)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (var i = -64; i &lt; room_height; i += 64)
+            <string>image_alpha_mod = 1;
+if (FinishLine_obj.y &gt; -128)
 {
-    draw_sprite_ext(sprite_index, 0, x, i + animation_frame, 1, 1, 0, image_blend, image_alpha);
+    image_alpha_mod = (128-FinishLine_obj.y) / 256;
+}
+for (var i = -64; i &lt; room_height; i += 64)
+{
+    draw_sprite_ext(sprite_index, 0, x, i + animation_frame, 1, 1, 0, image_blend, image_alpha*image_alpha_mod);
 }
 </string>
           </argument>

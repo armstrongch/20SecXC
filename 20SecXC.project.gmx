@@ -10,6 +10,7 @@
     <sprite>sprites\Grass_spr</sprite>
     <sprite>sprites\Trail_spr</sprite>
     <sprite>sprites\Runner_spr</sprite>
+    <sprite>sprites\FinishLine_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -26,6 +27,7 @@
     <object>objects\Runner_obj</object>
     <object>objects\Player_obj</object>
     <object>objects\UI_obj</object>
+    <object>objects\FinishLine_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Game_rm</room>

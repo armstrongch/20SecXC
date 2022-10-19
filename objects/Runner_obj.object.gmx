@@ -30,9 +30,9 @@ down = false;
 left = false;
 right = false;
 
-slow_run_speed = 3;
-medium_run_speed = 4;
-fast_run_speed = 6;
+medium_run_speed = 8;
+slow_run_speed = medium_run_speed*0.5;
+fast_run_speed = medium_run_speed*1.5;
 
 run_speed = medium_run_speed;
 is_player = false;
@@ -90,7 +90,7 @@ runners_ahead = global.runners_ahead;
 if (up) 
 {
     run_speed = fast_run_speed;
-    energy -= 0.5;
+    energy -= 2;
     if (energy &lt;= 0)
     {
         energy = 0;
@@ -100,15 +100,16 @@ if (up)
 else if (down) 
 {
     run_speed = slow_run_speed;
-    energy += 0.25;
-    if (energy &gt; max_energy)
-    {
-        energy = max_energy;
-    }
+    energy += 1;
 }
 else
 {
+    energy += 0.5;
     run_speed = medium_run_speed;
+}
+if (energy &gt; max_energy)
+{
+    energy = max_energy;
 }
 up = false;
 down = false;

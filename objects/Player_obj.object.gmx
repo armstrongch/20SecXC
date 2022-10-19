@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 is_player = true;
+max_energy = 110;
+energy = max_energy;
 </string>
           </argument>
         </arguments>
