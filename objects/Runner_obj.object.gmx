@@ -44,7 +44,6 @@ runners_ahead = 1;
 cpu_brain_type = "none";
 cpu_brain_state = "none";
 cpu_brain_state_counter = 0;
-
 </string>
           </argument>
         </arguments>
