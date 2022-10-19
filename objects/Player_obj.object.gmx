@@ -27,8 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 is_player = true;
-max_energy = 110;
-energy = max_energy;
+fast_run_speed = fast_run_speed * 1.125;
 </string>
           </argument>
         </arguments>
