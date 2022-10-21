@@ -78,7 +78,7 @@ if (animation_frame &gt;= 64)
             <string>image_alpha_mod = 1;
 if (FinishLine_obj.y &gt; -128)
 {
-    image_alpha_mod = (128-FinishLine_obj.y) / 256;
+    image_alpha_mod = max((128-FinishLine_obj.y) / 256, 0);
 }
 for (var i = -64; i &lt; room_height; i += 64)
 {
