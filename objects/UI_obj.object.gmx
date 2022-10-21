@@ -7,7 +7,58 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (!ScrollManager_obj.game_has_started)
+{
+    draw_set_color(c_black);
+    var rect_top = 96;
+    var rect_bottom = Player_obj.y - 16;
+    var rect_middle = rect_top + (rect_bottom-rect_top)/2;
+    
+    draw_rectangle(
+        room_width*0.25, rect_top,
+        room_width*0.75, rect_bottom,
+        false);
+    draw_set_color(c_white);
+    draw_set_font(GameFont_ft);
+    draw_set_valign(fa_middle);
+    draw_set_halign(fa_center);
+    
+    draw_text(room_width/2, rect_middle,
+"Podium Jostle!
+You are 150 meters from the end
+of the race. Use the arrows to
+jostle for position. Draft behind
+rivals to conserve energy. The
+right side of the trail is worn
+and smooth, but the left side is
+rough and unkempt and will slow
+you down. Good luck!"
+    );
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
