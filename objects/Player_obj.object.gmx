@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>event_inherited();
 is_player = true;
-fast_run_speed = fast_run_speed * 1.125;
 </string>
           </argument>
         </arguments>
@@ -82,11 +81,13 @@ if (debug_mode &amp;&amp; keyboard_check_pressed(ord('R'))) { game_restart(); }
             <kind>1</kind>
             <string>event_inherited();
 
+/*
 draw_set_color(c_black);
 draw_rectangle(0, 64, 64*4, 64*4, false);
 draw_set_color(c_white);
 draw_text(12, 76, "Distance#Remaining:#" + string(ScrollManager_obj.player_distance_from_finish));
 draw_text(12, 116, "Calculated Run Speed:#" + string(calc_run_speed));
+*/
 
 draw_set_alpha(0.5);
 draw_set_color(c_green);

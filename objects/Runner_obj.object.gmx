@@ -49,6 +49,42 @@ cpu_brain_state_counter = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (y &lt;= FinishLine_obj.y)
+{
+    with (ScrollManager_obj)
+    {
+        if (!game_has_ended)
+        {
+            game_has_ended = true;
+            show_debug_message("timer: " + string(race_timer));
+            var rounded_timer = floor(race_timer/30*100)/100;
+            show_debug_message("rounded: " + string(rounded_timer));
+        }
+        
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>

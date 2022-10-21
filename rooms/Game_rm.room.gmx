@@ -3,7 +3,7 @@
   <caption></caption>
   <width>1024</width>
   <height>768</height>
-  <vsnap>32</vsnap>
+  <vsnap>64</vsnap>
   <hsnap>64</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
@@ -27,9 +27,9 @@ with (ScrollManager_obj)
 {
     rightmost_trail_x = instance_nearest(room_width, room_height, Trail_obj).x;
     leftmost_trail_x = instance_nearest(0, room_height, Trail_obj).x;
-    max_player_distance_from_finish = Player_obj.slow_run_speed*30*20; //20 seconds at 30 fps at slowest run speed
+    max_player_distance_from_finish = Player_obj.medium_run_speed*30*20; //20 seconds at 30 fps at slowest run speed
     player_distance_from_finish = max_player_distance_from_finish;
-    scroll_speed = Player_obj.medium_run_speed;
+    scroll_speed = Player_obj.slow_run_speed;
 }
 
 with (Trail_obj)
@@ -87,22 +87,38 @@ assign_cpu_brains();</code>
     <instance objName="Trail_obj" x="640" y="704" name="inst_75921066" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Trail_obj" x="256" y="704" name="inst_95AC79CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Trail_obj" x="704" y="704" name="inst_127D0016" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="256" y="288" name="inst_75D717E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="384" y="288" name="inst_BDAC8C99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="512" y="288" name="inst_AE6050B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="640" y="288" name="inst_CC209205" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="320" y="384" name="inst_85F143D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="448" y="384" name="inst_474F6E8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="576" y="384" name="inst_3BE78AC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="704" y="384" name="inst_86C8D677" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="256" y="480" name="inst_D5877D56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="512" y="480" name="inst_649884A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="640" y="480" name="inst_33FD1B45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="704" y="576" name="inst_EE3A436A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="576" y="576" name="inst_B87FD08B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="448" y="576" name="inst_DF643F4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Runner_obj" x="320" y="576" name="inst_C18CAFF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Player_obj" x="384" y="480" name="inst_FE61134C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="256" y="576" name="inst_3B5FBE80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="320" y="576" name="inst_147606FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="384" y="576" name="inst_6BE5C178" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="448" y="576" name="inst_61C6B4CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="512" y="576" name="inst_40EA6DA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="576" y="576" name="inst_AC596D2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="640" y="576" name="inst_09D40CA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="640" y="512" name="inst_94EB5831" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="576" y="512" name="inst_D57525F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="512" y="512" name="inst_FDA48CB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="448" y="512" name="inst_477A1F53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="384" y="512" name="inst_1640B6DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="320" y="512" name="inst_7989F2F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="256" y="512" name="inst_44F6B39D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="256" y="448" name="inst_28041233" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="320" y="448" name="inst_CD7464BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="384" y="448" name="inst_3E1AE576" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="448" y="448" name="inst_FFDCC848" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="512" y="448" name="inst_67A55C8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="576" y="448" name="inst_928DA055" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="640" y="448" name="inst_77E90D43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="640" y="384" name="inst_3F13B396" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="576" y="384" name="inst_9C5E0211" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="512" y="384" name="inst_C06E97E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="384" y="384" name="inst_1065E6ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="320" y="384" name="inst_4FE36D9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="256" y="384" name="inst_1D79772C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Player_obj" x="448" y="384" name="inst_3DF3A1AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="704" y="384" name="inst_E275B78B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="704" y="448" name="inst_001DE9DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="704" y="512" name="inst_6F2C0E26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="Runner_obj" x="704" y="576" name="inst_B3FB103F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

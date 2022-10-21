@@ -11,6 +11,7 @@
     <sprite>sprites\Trail_spr</sprite>
     <sprite>sprites\Runner_spr</sprite>
     <sprite>sprites\FinishLine_spr</sprite>
+    <sprite>sprites\DistanceMarker_obj</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -20,6 +21,9 @@
     <script>scripts\move_all_runners.gml</script>
     <script>scripts\assign_cpu_brains.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\GameFont_ft</font>
+  </fonts>
   <objects name="objects">
     <object>objects\Tree_obj</object>
     <object>objects\Trail_obj</object>
