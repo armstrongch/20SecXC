@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!ScrollManager_obj.game_has_started)
+            <string>/*if (!ScrollManager_obj.game_has_started)
 {
     draw_set_color(c_black);
     var rect_top = 96;
@@ -52,7 +52,7 @@ and smooth, but the left side is
 rough and unkempt and will slow
 you down. Good luck!"
     );
-}
+}*/
 </string>
           </argument>
         </arguments>
