@@ -21,7 +21,7 @@ y += y_dif;
 x += x_dif;
 
 //draft off runners ahead
-runner_ahead = collision_rectangle(x+8, y+y_dif - 32, x+56, y+32, Runner_obj, false, true);
+runner_ahead = collision_rectangle(x+16, y+y_dif - 32, x+48, y+32, Runner_obj, false, true);
 if (runner_ahead != noone)
 {
     energy = min(max_energy, energy+1);

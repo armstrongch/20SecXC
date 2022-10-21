@@ -24,4 +24,20 @@ else
 {  
     player_distance_from_finish -= abs(scroll_speed);
 }
+
+//Draw distance markers
+if (next_15_dist >= 15)
+{
+    var top_tree = instance_nearest(room_width*0.6, -100, Tree_obj);
+    top_tree_dist = player_distance_from_finish - (abs(y - Player_obj.y));
+    if (top_tree_dist <= next_15_marker)
+    {
+        top_tree.sprite_index = DistanceMarker_obj;
+        top_tree.distance_text = string(next_15_dist) + "M";
+        next_15_marker -= max_player_distance_from_finish*0.1;
+        next_15_dist -= 15;
+    }
+}
+
+
 FinishLine_obj.y = Player_obj.y - player_distance_from_finish;

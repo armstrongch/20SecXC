@@ -32,6 +32,9 @@ max_player_distance_from_finish = 9999;
 player_distance_from_finish = max_player_distance_from_finish;
 scroll_speed = -1;
 
+next_15_marker = 9999;
+next_15_dist = 135;
+
 game_has_started = false;
 game_has_ended = false;
 
