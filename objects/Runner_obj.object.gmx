@@ -36,7 +36,7 @@ fast_run_speed = medium_run_speed*1.5;
 
 run_speed = medium_run_speed;
 is_player = false;
-max_energy = 100;
+max_energy = 200;
 energy = max_energy;
 is_drafting = false;
 runners_ahead = 1;
