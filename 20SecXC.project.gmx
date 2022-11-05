@@ -7,13 +7,15 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\Tree_spr</sprite>
-    <sprite>sprites\Grass_spr</sprite>
     <sprite>sprites\Trail_spr</sprite>
     <sprite>sprites\Runner_spr</sprite>
     <sprite>sprites\FinishLine_spr</sprite>
     <sprite>sprites\DistanceMarker_obj</sprite>
+    <sprite>sprites\PicoPallette_spr</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\Background_bk</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\get_cpu_input.gml</script>
