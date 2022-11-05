@@ -14,6 +14,7 @@
     <sprite>sprites\Runner_spr</sprite>
     <sprite>sprites\Runner2_spr</sprite>
     <sprite>sprites\Runner3_spr</sprite>
+    <sprite>sprites\PlayerSinglet_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\Background_bk</background>
