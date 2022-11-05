@@ -25,7 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>up = false;
+            <string>switch (irandom(2))
+{
+    case 0: sprite_index = Runner2_spr; break;
+    case 1: sprite_index = Runner3_spr; break;
+}
+
+up = false;
 down = false;
 left = false;
 right = false;
