@@ -81,7 +81,6 @@ if (debug_mode &amp;&amp; keyboard_check_pressed(ord('R'))) { game_restart(); }
             <kind>1</kind>
             <string>if (is_drafting) { image_blend = make_color_rgb(64, 64, 255); } else { image_blend = c_white; }
 event_inherited();
-draw_sprite(PlayerSinglet_spr, 0, x, y);
 </string>
           </argument>
         </arguments>
