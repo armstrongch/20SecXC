@@ -29,6 +29,7 @@
 {
     case 0: sprite_index = Runner2_spr; break;
     case 1: sprite_index = Runner3_spr; break;
+    default: sprite_index = Runner_spr; break;
 }
 
 up = false;
@@ -50,6 +51,8 @@ runners_ahead = 1;
 cpu_brain_type = "none";
 cpu_brain_state = "none";
 cpu_brain_state_counter = 0;
+
+animation_frame = irandom(16);
 </string>
           </argument>
         </arguments>
@@ -108,7 +111,9 @@ cpu_brain_state_counter = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!ScrollManager_obj.game_has_started)
+            <string>animation_frame += 1;
+
+if (!ScrollManager_obj.game_has_started)
 {
     up = false; down = false; left = false; right = false;
 }
@@ -216,6 +221,11 @@ if (is_player)
             global.draw_runner.x+6 + 51*(global.draw_runner.energy/global.draw_runner.max_energy),
             global.draw_runner.y-6, false);
     }
+}
+
+if (!is_drafting)
+{
+    draw_sprite(DraftWind_spr, animation_frame, x, y-12);
 }
 </string>
           </argument>
