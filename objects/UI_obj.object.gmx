@@ -48,6 +48,8 @@
     var line_separator = 24;
     
     draw_text(room_width/2, rect_top + text_y_offset, "Podium Jostle!"); text_y_offset += line_separator;
+    text_y_offset += line_separator;
+    text_y_offset += line_separator;
     draw_text(room_width/2, rect_top + text_y_offset, "You are 150 meters from the end"); text_y_offset += line_separator;
     draw_text(room_width/2, rect_top + text_y_offset, "of the race. Use the arrows to"); text_y_offset += line_separator;
     draw_text(room_width/2, rect_top + text_y_offset, "jostle for position. Draft behind"); text_y_offset += line_separator;
@@ -56,6 +58,8 @@
     draw_text(room_width/2, rect_top + text_y_offset, "and smooth, but the left side is"); text_y_offset += line_separator;
     draw_text(room_width/2, rect_top + text_y_offset, "rough and unkempt and will slow") text_y_offset += line_separator;
     draw_text(room_width/2, rect_top + text_y_offset, "you down. Good luck!"); text_y_offset += line_separator;
+    text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "Press UP to begin!"); text_y_offset += line_separator;
 }
 </string>
           </argument>
