@@ -27,31 +27,35 @@
             <kind>1</kind>
             <string>if (!ScrollManager_obj.game_has_started)
 {
-    draw_set_color(c_black);
+    
+    draw_set_color(make_color_rgb(0, 135, 81));
     var rect_top = 96;
-    var rect_bottom = Player_obj.y - 16;
+    var rect_bottom = Player_obj.y - 64;
     var rect_middle = rect_top + (rect_bottom-rect_top)/2;
     
     draw_rectangle(
-        room_width*0.25, rect_top,
-        room_width*0.75, rect_bottom,
+        64*4.5,
+        rect_top,
+        room_width - 64*4.5,
+        rect_bottom,
         false);
     draw_set_color(c_white);
     draw_set_font(GameFont_ft);
     draw_set_valign(fa_middle);
     draw_set_halign(fa_center);
     
-    var text_y_offset = 0;
+    var text_y_offset = 24;
+    var line_separator = 24;
     
-    draw_text(room_width/2, rect_middle + text_y_offset, "Podium Jostle!"); text_y_offset += 16;
-    draw_text(room_width/2, rect_middle + text_y_offset, "You are 150 meters from the end"); text_y_offset += 16;
-    draw_text(room_width/2, rect_middle + text_y_offset, "of the race. Use the arrows to"); text_y_offset += 16;
-    draw_text(room_width/2, rect_middle + text_y_offset, "jostle for position. Draft behind"); text_y_offset += 16;
-    draw_text(room_width/2, rect_middle + text_y_offset, "rivals to conserve energy. The"); text_y_offset += 16;
-    draw_text(room_width/2, rect_middle + text_y_offset, "right side of the trail is worn"); text_y_offset += 16;
-    draw_text(room_width/2, rect_middle + text_y_offset, "and smooth, but the left side is"); text_y_offset += 16;
-    draw_text(room_width/2, rect_middle + text_y_offset, "rough and unkempt and will slow") text_y_offset += 16;;
-    draw_text(room_width/2, rect_middle + text_y_offset, "you down. Good luck!"); text_y_offset += 16;
+    draw_text(room_width/2, rect_top + text_y_offset, "Podium Jostle!"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "You are 150 meters from the end"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "of the race. Use the arrows to"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "jostle for position. Draft behind"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "rivals to conserve energy. The"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "right side of the trail is worn"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "and smooth, but the left side is"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "rough and unkempt and will slow") text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "you down. Good luck!"); text_y_offset += line_separator;
 }
 </string>
           </argument>
