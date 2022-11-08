@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (!ScrollManager_obj.game_has_started)
+            <string>if (!ScrollManager_obj.game_has_started)
 {
     draw_set_color(c_black);
     var rect_top = 96;
@@ -41,18 +41,18 @@
     draw_set_valign(fa_middle);
     draw_set_halign(fa_center);
     
-    draw_text(room_width/2, rect_middle,
-"Podium Jostle!
-You are 150 meters from the end
-of the race. Use the arrows to
-jostle for position. Draft behind
-rivals to conserve energy. The
-right side of the trail is worn
-and smooth, but the left side is
-rough and unkempt and will slow
-you down. Good luck!"
-    );
-}*/
+    var text_y_offset = 0;
+    
+    draw_text(room_width/2, rect_middle + text_y_offset, "Podium Jostle!"); text_y_offset += 16;
+    draw_text(room_width/2, rect_middle + text_y_offset, "You are 150 meters from the end"); text_y_offset += 16;
+    draw_text(room_width/2, rect_middle + text_y_offset, "of the race. Use the arrows to"); text_y_offset += 16;
+    draw_text(room_width/2, rect_middle + text_y_offset, "jostle for position. Draft behind"); text_y_offset += 16;
+    draw_text(room_width/2, rect_middle + text_y_offset, "rivals to conserve energy. The"); text_y_offset += 16;
+    draw_text(room_width/2, rect_middle + text_y_offset, "right side of the trail is worn"); text_y_offset += 16;
+    draw_text(room_width/2, rect_middle + text_y_offset, "and smooth, but the left side is"); text_y_offset += 16;
+    draw_text(room_width/2, rect_middle + text_y_offset, "rough and unkempt and will slow") text_y_offset += 16;;
+    draw_text(room_width/2, rect_middle + text_y_offset, "you down. Good luck!"); text_y_offset += 16;
+}
 </string>
           </argument>
         </arguments>
