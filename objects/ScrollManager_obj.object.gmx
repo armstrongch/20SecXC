@@ -64,6 +64,10 @@ race_timer = 0;
             <string>if (keyboard_check_pressed(vk_space)) 
 {
     game_has_started = true;
+    if (!audio_is_playing(Groovin_snd))
+    {
+        audio_play_sound(Groovin_snd, 1, true);
+    }
 }
 if (game_has_started)
 {
