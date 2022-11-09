@@ -53,6 +53,8 @@ cpu_brain_state = "none";
 cpu_brain_state_counter = 0;
 
 animation_frame = irandom(16);
+
+finish_position = -1;
 </string>
           </argument>
         </arguments>
@@ -77,14 +79,34 @@ animation_frame = irandom(16);
             <kind>1</kind>
             <string>if (y &lt;= FinishLine_obj.y)
 {
+    if (finish_position == -1)
+    {
+        finish_position = runners_ahead + 1;
+    }
+    if (is_player)
+    {
+        switch(finish_position)
+        {
+            case 1:
+                finish_text = "Gold Medal! 1st Place!";
+                break;
+            case 2:
+                finish_text = "Silver Medal! 2nd Place!";
+                break;
+            case 3:
+                finish_text = "Bronze Medal! 3rd Place!";
+                break;
+            default:
+                finish_text = "Finished in " + string(finish_position) + "th Place!";
+                break;
+                
+        }
+    }
     with (ScrollManager_obj)
     {
         if (!game_has_ended)
         {
             game_has_ended = true;
-            show_debug_message("timer: " + string(race_timer));
-            var rounded_timer = floor(race_timer/30*100)/100;
-            show_debug_message("rounded: " + string(rounded_timer));
         }
         
     }

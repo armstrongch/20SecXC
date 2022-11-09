@@ -61,7 +61,7 @@ race_timer = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check_pressed(vk_up) || keyboard_check(ord('W'))) 
+            <string>if (keyboard_check_pressed(vk_space)) 
 {
     game_has_started = true;
 }

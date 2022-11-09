@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 is_player = true;
+finish_text = "";
 </string>
           </argument>
         </arguments>

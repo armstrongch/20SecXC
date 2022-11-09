@@ -25,27 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!ScrollManager_obj.game_has_started)
+            <string>draw_set_color(make_color_rgb(0, 135, 81)); //green
+var rect_top = 96;
+var rect_bottom = Player_obj.y - 64;
+var rect_middle = rect_top + (rect_bottom-rect_top)/2;
+
+draw_set_font(GameFont_ft);
+draw_set_valign(fa_middle);
+draw_set_halign(fa_center);
+
+var text_y_offset = 24;
+var line_separator = 24;
+
+if (!ScrollManager_obj.game_has_started)
 {
-    
-    draw_set_color(make_color_rgb(0, 135, 81));
-    var rect_top = 96;
-    var rect_bottom = Player_obj.y - 64;
-    var rect_middle = rect_top + (rect_bottom-rect_top)/2;
-    
     draw_rectangle(
         64*4.5,
         rect_top,
         room_width - 64*4.5,
         rect_bottom,
         false);
-    draw_set_color(c_white);
-    draw_set_font(GameFont_ft);
-    draw_set_valign(fa_middle);
-    draw_set_halign(fa_center);
     
-    var text_y_offset = 24;
-    var line_separator = 24;
+    draw_set_color(c_white);
     
     draw_text(room_width/2, rect_top + text_y_offset, "Podium Jostle!"); text_y_offset += line_separator;
     text_y_offset += line_separator;
@@ -59,7 +60,14 @@
     draw_text(room_width/2, rect_top + text_y_offset, "rough and unkempt and will slow") text_y_offset += line_separator;
     draw_text(room_width/2, rect_top + text_y_offset, "you down. Good luck!"); text_y_offset += line_separator;
     text_y_offset += line_separator;
-    draw_text(room_width/2, rect_top + text_y_offset, "Press UP to begin!"); text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "Press SPACE to begin!"); text_y_offset += line_separator;
+}
+else if (ScrollManager_obj.game_has_ended &amp;&amp; Player_obj.finish_position &gt; -1)
+{
+    draw_set_color(c_white);
+    draw_text(room_width/2, rect_top + text_y_offset, Player_obj.finish_text); text_y_offset += line_separator;
+    text_y_offset += line_separator;
+    draw_text(room_width/2, rect_top + text_y_offset, "Press R to restart."); text_y_offset += line_separator;
 }
 </string>
           </argument>
