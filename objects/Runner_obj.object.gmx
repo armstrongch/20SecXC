@@ -224,26 +224,6 @@ if (x + x_dif &lt; ScrollManager_obj.leftmost_trail_x) { x_dif = ScrollManager_o
           <argument>
             <kind>1</kind>
             <string>draw_self();
-if (is_player)
-{
-    global.draw_runner = self;
-    with(UI_obj)
-    {
-        draw_set_color(c_black);
-        draw_rectangle(
-            global.draw_runner.x+4,
-            global.draw_runner.y-12,
-            global.draw_runner.x+59,
-            global.draw_runner.y-4, false);
-        
-        draw_set_color(c_white);
-        draw_rectangle(
-            global.draw_runner.x+6,
-            global.draw_runner.y-10,
-            global.draw_runner.x+6 + 51*(global.draw_runner.energy/global.draw_runner.max_energy),
-            global.draw_runner.y-6, false);
-    }
-}
 
 if (!is_drafting)
 {

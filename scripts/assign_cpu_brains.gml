@@ -11,6 +11,6 @@ var rand_mod = irandom(cpu_brain_type_count-1);
 for (var i = 0; i < instance_number(Runner_obj); i += 1)
 {
     var test_runner = instance_find(Runner_obj, i);
-    test_runner.cpu_brain_type = cpu_brain_types[(i+rand_mod)%3];
+    test_runner.cpu_brain_type = cpu_brain_types[5];//(i+rand_mod)%cpu_brain_type_count];
 }
 

@@ -60,21 +60,35 @@ else
             cpu_brain_state_counter = 15;
             break;
         case "random_drifter":
-            switch(irandom(2))
+            var rand_int = irandom(5);
+            switch(rand_int)
             {
-                case 0: cpu_brain_state = "left"; break;
-                case 1: cpu_brin_state = "right"; break;
+                case 0:
+                    cpu_brain_state = "left";
+                    break;
+                case 1:
+                    cpu_brain_state = "right";
+                    break;
+                default:
+                    cpu_brain_state = "up";
+                    break;
             }
+            cpu_brain_state_counter = 15;
             break;
         case "player_watcher":
-            if (y < Player_obj.y)
-            {
-                cpu_brain_state = "down_right";
-            }
-            else
+            if (y > Player_obj.y)
             {
                 cpu_brain_state = "up";
             }
+            else
+            {
+                var rand_int = irandom(10);
+                if (rand_int == 1) { cpu_brain_state = "right"; }
+                else if (rand_int == 2) { cpu_brain_state = "left"; }
+                else if (rand_int < 7) { cpu_brain_state = "down"; }
+            }
+            cpu_brain_state_counter = 90;
+            
             break;
     }
 }

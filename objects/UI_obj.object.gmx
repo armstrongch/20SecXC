@@ -25,7 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(make_color_rgb(0, 135, 81)); //green
+            <string>with (Player_obj)
+{
+    draw_set_color(c_black);
+    draw_rectangle( x+4, y-12, x+59, y-4, false);
+    
+    draw_set_color(c_white);
+    draw_rectangle( x+6, y-10, x+6 + 51*(energy/max_energy), y-6, false);
+}
+
+draw_set_color(make_color_rgb(0, 135, 81)); //green
 var rect_top = 96;
 var rect_bottom = Player_obj.y - 64;
 var rect_middle = rect_top + (rect_bottom-rect_top)/2;
